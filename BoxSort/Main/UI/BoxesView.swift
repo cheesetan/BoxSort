@@ -33,7 +33,7 @@ struct BoxesView: View {
                                         Text("^[\($box.items.count) Items](inflect: true)")
                                             .foregroundStyle(.secondary)
                                     } else {
-                                        Text("^[\($box.items.filter({$0.name.wrappedValue.uppercased().contains(searchText.uppercased())}).count) Matches](inflect: true)")
+                                        Text("^[\($box.items.filter({$0.name.wrappedValue.uppercased().contains(searchText.uppercased())}).count) Items](inflect: true) matching search")
                                             .foregroundStyle(.secondary)
                                     }
                                 }
@@ -82,8 +82,15 @@ struct BoxesView: View {
         } else {
             var boxesToReturn: [Box] = []
             boxManager.boxes.forEach { box in
+                var alreadyAdded = false
                 box.items.forEach { item in
                     if item.name.uppercased().contains(searchText.uppercased()) {
+                        boxesToReturn.append(box)
+                        alreadyAdded = true
+                    }
+                }
+                if !alreadyAdded {
+                    if box.name.uppercased().contains(searchText.uppercased()) {
                         boxesToReturn.append(box)
                     }
                 }
