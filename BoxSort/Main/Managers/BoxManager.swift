@@ -11,7 +11,7 @@ struct Item: Codable, Identifiable {
     var id = UUID()
     var name: String
     var description: String
-    var imageB64: String
+    var imageFileManagerUUID: String
 }
 
 struct Box: Codable, Identifiable {
@@ -54,6 +54,15 @@ class BoxManager: ObservableObject {
         if let retrievedBoxData = try? Data(contentsOf: archiveURL),
             let boxesDecoded = try? propertyListDecoder.decode([Box].self, from: retrievedBoxData) {
             boxes = boxesDecoded
+        }
+    }
+    
+    func findBoxWithUUID(uuid: String, _ completion: @escaping ((Box) -> Void)) {
+        boxes.forEach { box in
+            print(box.id.uuidString)
+            if box.id.uuidString == uuid {
+                completion(box)
+            }
         }
     }
 }

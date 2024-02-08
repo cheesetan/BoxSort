@@ -41,7 +41,7 @@ struct AddBoxView: View {
                 Section {
                     ForEach($items, id: \.id) { $item in
                         NavigationLink {
-                            ItemDetailView(name: $item.name, description: $item.description, imageB64: $item.imageB64)
+                            ItemDetailView(name: $item.name, description: $item.description, imageFileManagerUUID: $item.imageFileManagerUUID)
                         } label: {
                             VStack(alignment: .leading) {
                                 Text($item.name.wrappedValue)
@@ -64,7 +64,7 @@ struct AddBoxView: View {
                     Button {
                         withAnimation {
                             focused = false
-                            items.append(Item(name: "New Item", description: "", imageB64: ""))
+                            items.append(Item(name: "New Item", description: "", imageFileManagerUUID: ""))
                         }
                     } label: {
                         Label("Add Item", systemImage: "plus")

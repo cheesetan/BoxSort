@@ -14,6 +14,7 @@
 		F36A539F2B75330D00B712DC /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36A539E2B75330D00B712DC /* PhotoPicker.swift */; };
 		F36A53A12B75331E00B712DC /* UIImage+base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36A53A02B75331E00B712DC /* UIImage+base64.swift */; };
 		F36A53A32B75333300B712DC /* String+imageFromBase64.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36A53A22B75333300B712DC /* String+imageFromBase64.swift */; };
+		F36A53A62B7539E400B712DC /* UIImage+resized.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36A53A52B7539E400B712DC /* UIImage+resized.swift */; };
 		F39B38042B750DBB00A209FC /* BoxSortApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39B38032B750DBB00A209FC /* BoxSortApp.swift */; };
 		F39B38062B750DBB00A209FC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39B38052B750DBB00A209FC /* ContentView.swift */; };
 		F39B38082B750DBD00A209FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F39B38072B750DBD00A209FC /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 		F36A539E2B75330D00B712DC /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		F36A53A02B75331E00B712DC /* UIImage+base64.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+base64.swift"; sourceTree = "<group>"; };
 		F36A53A22B75333300B712DC /* String+imageFromBase64.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+imageFromBase64.swift"; sourceTree = "<group>"; };
+		F36A53A52B7539E400B712DC /* UIImage+resized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+resized.swift"; sourceTree = "<group>"; };
 		F39B38002B750DBB00A209FC /* BoxSort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoxSort.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F39B38032B750DBB00A209FC /* BoxSortApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxSortApp.swift; sourceTree = "<group>"; };
 		F39B38052B750DBB00A209FC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 				F36A539C2B7532FA00B712DC /* CameraView.swift */,
 				F36A539E2B75330D00B712DC /* PhotoPicker.swift */,
 				F36A53A02B75331E00B712DC /* UIImage+base64.swift */,
+				F36A53A52B7539E400B712DC /* UIImage+resized.swift */,
 				F36A53A22B75333300B712DC /* String+imageFromBase64.swift */,
 			);
 			path = Components;
@@ -220,6 +223,7 @@
 				F39B381B2B75174B00A209FC /* BoxManager.swift in Sources */,
 				F36A53A32B75333300B712DC /* String+imageFromBase64.swift in Sources */,
 				F36A539A2B7532D500B712DC /* BoxDetailView.swift in Sources */,
+				F36A53A62B7539E400B712DC /* UIImage+resized.swift in Sources */,
 				F36A539D2B7532FA00B712DC /* CameraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

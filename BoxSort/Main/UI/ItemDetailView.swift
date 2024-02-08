@@ -16,7 +16,7 @@ struct ItemDetailView: View {
     
     @Binding var name: String
     @Binding var description: String
-    @Binding var imageB64: String
+    @Binding var imageFileManagerUUID: String
     
     var body: some View {
         List {
@@ -28,7 +28,7 @@ struct ItemDetailView: View {
             }
             
             Section {
-                if !imageB64.isEmpty, let image = imageB64.imageFromBase64 {
+                if !imageFileManagerUUID.isEmpty, let image = UIImage(contentsOfFile: FileManager.documentsDirectory.appendingPathComponent("\(imageFileManagerUUID).jpg").path()) {
                     Image(uiImage: image)
                         .resizable()
                         .scaledToFit()
@@ -48,16 +48,16 @@ struct ItemDetailView: View {
                         Label("Take Photo", systemImage: "camera")
                     }
                     
-                    if !imageB64.isEmpty {
+                    if !imageFileManagerUUID.isEmpty {
                         Divider()
                         Button(role: .destructive) {
-                            imageB64 = ""
+                            imageFileManagerUUID = ""
                         } label: {
                             Label("Remove Photo", systemImage: "trash")
                         }
                     }
                 } label: {
-                    Text(imageB64.isEmpty ? "Add Photo" : "Change Photo")
+                    Text(imageFileManagerUUID.isEmpty ? "Add Photo" : "Change Photo")
                 }
             }
         }
@@ -70,9 +70,25 @@ struct ItemDetailView: View {
             PhotoPicker(selectedImage: $selectedImage)
         }
         .onChange(of: selectedImage) {
-            if let image = selectedImage {
-                imageB64 = image.base64 ?? ""
+            if let selectedImage = selectedImage {
+                let uuid = UUID()
+                imageFileManagerUUID = uuid.uuidString
+                writeToDisk(image: selectedImage, imageName: uuid.uuidString)
             }
         }
+    }
+    
+    func writeToDisk(image: UIImage, imageName: String) {
+        let savePath = FileManager.documentsDirectory.appendingPathComponent("\(imageName).jpg") //Where are I want to store my data
+        if let jpegData = image.jpegData(compressionQuality: 0.5) { // I can adjust the compression quality.
+            try? jpegData.write(to: savePath, options: [.atomic, .completeFileProtection])
+        }
+    }
+}
+
+extension FileManager {
+    static var documentsDirectory: URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
     }
 }
