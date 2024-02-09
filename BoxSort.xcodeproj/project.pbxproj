@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F3315C092B7674D5004F6710 /* BoxRetrieverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3315C082B7674D5004F6710 /* BoxRetrieverView.swift */; };
 		F36A53962B75329500B712DC /* AddBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36A53952B75329500B712DC /* AddBoxView.swift */; };
 		F36A53982B7532AB00B712DC /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36A53972B7532AB00B712DC /* ItemDetailView.swift */; };
 		F36A539A2B7532D500B712DC /* BoxDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36A53992B7532D500B712DC /* BoxDetailView.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F3315C082B7674D5004F6710 /* BoxRetrieverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxRetrieverView.swift; sourceTree = "<group>"; };
 		F36A53952B75329500B712DC /* AddBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBoxView.swift; sourceTree = "<group>"; };
 		F36A53972B7532AB00B712DC /* ItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailView.swift; sourceTree = "<group>"; };
 		F36A53992B7532D500B712DC /* BoxDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxDetailView.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				F36A53952B75329500B712DC /* AddBoxView.swift */,
 				F36A53972B7532AB00B712DC /* ItemDetailView.swift */,
 				F36A53992B7532D500B712DC /* BoxDetailView.swift */,
+				F3315C082B7674D5004F6710 /* BoxRetrieverView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 			files = (
 				F36A53A12B75331E00B712DC /* UIImage+base64.swift in Sources */,
 				F36A53982B7532AB00B712DC /* ItemDetailView.swift in Sources */,
+				F3315C092B7674D5004F6710 /* BoxRetrieverView.swift in Sources */,
 				F39B38062B750DBB00A209FC /* ContentView.swift in Sources */,
 				F36A539F2B75330D00B712DC /* PhotoPicker.swift in Sources */,
 				F36A53962B75329500B712DC /* AddBoxView.swift in Sources */,

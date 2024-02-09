@@ -22,30 +22,46 @@ struct BoxesView: View {
                     ContentUnavailableView("No Boxes", systemImage: "shippingbox.fill", description: Text("You currently have no Boxes, click the + button in the upper right hand corner to add one!"))
                 } else {
                     List {
-                        ForEach(filteredBoxes, id: \.id) { $box in
-                            NavigationLink {
-                                BoxDetailView(box: $box)
-                            } label: {
-                                VStack(alignment: .leading) {
-                                    Text($box.name.wrappedValue)
-                                        .font(.headline)
-                                        .fontWeight(.bold)
-                                    if searchText.isEmpty {
+                        if searchText.isEmpty {
+                            ForEach(filteredBoxes, id: \.id) { $box in
+                                NavigationLink {
+                                    BoxDetailView(box: $box)
+                                } label: {
+                                    VStack(alignment: .leading) {
+                                        Text($box.name.wrappedValue)
+                                            .font(.headline)
+                                            .fontWeight(.bold)
                                         Text("^[\($box.items.count) Items](inflect: true)")
                                             .foregroundStyle(.secondary)
-                                    } else {
-                                        Text("^[\($box.items.filter({$0.name.wrappedValue.uppercased().contains(searchText.uppercased())}).count) Items](inflect: true) matching search")
-                                            .foregroundStyle(.secondary)
+                                    }
+                                    .padding(.vertical, 5)
+                                }
+                            }
+                            .onDelete { indexSet in
+                                boxManager.boxes.remove(atOffsets: indexSet)
+                            }
+                            .onMove { fromOffsets, toOffset in
+                                boxManager.boxes.move(fromOffsets: fromOffsets, toOffset: toOffset)
+                            }
+                        } else {
+                            ForEach(filteredBoxes, id: \.id) { $box in
+                                ForEach($box.items, id: \.id) { $item in
+                                    if $item.name.wrappedValue.uppercased().contains(searchText.uppercased()) {
+                                        NavigationLink {
+                                            BoxDetailView(box: $box)
+                                        } label: {
+                                            VStack(alignment: .leading) {
+                                                Text($item.name.wrappedValue)
+                                                    .font(.headline)
+                                                    .fontWeight(.bold)
+                                                Text($box.name.wrappedValue)
+                                                    .foregroundStyle(.secondary)
+                                            }
+                                            .padding(.vertical, 5)
+                                        }
                                     }
                                 }
-                                .padding(.vertical, 5)
                             }
-                        }
-                        .onDelete { indexSet in
-                            boxManager.boxes.remove(atOffsets: indexSet)
-                        }
-                        .onMove { fromOffsets, toOffset in
-                            boxManager.boxes.move(fromOffsets: fromOffsets, toOffset: toOffset)
                         }
                     }
                     .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
@@ -83,15 +99,8 @@ struct BoxesView: View {
         } else {
             var boxesToReturn: [Box] = []
             boxManager.boxes.forEach { box in
-                var alreadyAdded = false
                 box.items.forEach { item in
                     if item.name.uppercased().contains(searchText.uppercased()) {
-                        boxesToReturn.append(box)
-                        alreadyAdded = true
-                    }
-                }
-                if !alreadyAdded {
-                    if box.name.uppercased().contains(searchText.uppercased()) {
                         boxesToReturn.append(box)
                     }
                 }

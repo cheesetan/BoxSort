@@ -17,12 +17,18 @@ struct ItemDetailView: View {
     @Binding var name: String
     @Binding var description: String
     @Binding var imageFileManagerUUID: String
+    @State var canEdit: Bool = true
     
     var body: some View {
         List {
             Section {
-                TextField("Item Name", text: $name)
-                TextField("Item Description (Optional)", text: $description)
+                if canEdit {
+                    TextField("Item Name", text: $name)
+                    TextField("Item Description (Optional)", text: $description, axis: .vertical)
+                } else {
+                    Text(name)
+                    Text(description)
+                }
             } header: {
                 Text("Information")
             }
@@ -59,6 +65,7 @@ struct ItemDetailView: View {
                 } label: {
                     Text(imageFileManagerUUID.isEmpty ? "Add Photo" : "Change Photo")
                 }
+                .disabled(!canEdit)
             }
         }
         .navigationTitle(name)
